@@ -20,7 +20,7 @@ func _physics_process(_delta):
 	# TODO: Print the direction to see what number we get
 	# This will help us understand what's happening
 	# ("X Direction: ", xDirection)
-	
+	velocity.x = xSpeed * xDirection
 	
 	# TODO: Get vertical input (up/down keys)  
 	# Same idea, but for up and down movement
@@ -29,8 +29,8 @@ func _physics_process(_delta):
 	
 	# TODO: Print the Y direction too
 	# Type this exactly: print("Y Direction: ", yDirection)
-	ySpeed = 300
-	yDirection = Input.get_axis("ui_up","ui_down")
+	
+	
 	velocity.y = ySpeed * yDirection
 	# TODO: Calculate X movement by multiplying direction × speed
 	# This gives us the actual pixels to move this frame
@@ -50,9 +50,9 @@ func _physics_process(_delta):
 	# Use if statements to check xDirection and yDirection
 	# Set facing to "right", "left", "down", or "up"
 	# Only update facing when actually moving (direction != 0)
-	xSpeed = 300
-	xDirection = Input.get_axis("ui_left","ui_right")
-	velocity.x = xSpeed * xDirection
+	
+	
+	
 	move_and_slide()
 	
 	if xDirection > 0:
@@ -60,7 +60,7 @@ func _physics_process(_delta):
 	elif xDirection < 0:
 		facing="left"
 	if yDirection < 0:
-		facing="back"
+		facing="up"
 	elif yDirection > 0:
 		facing="down"
 	
@@ -85,7 +85,7 @@ func update_animation():
 	# Use: _animation_player.play("idle_" + facing)
 	# This combines "idle_" with whatever direction we're facing
 	if xDirection ==0 && yDirection ==0 :_animation_player.play("idle_"+facing)
-	elif xDirection < 0 && yDirection ==0 : _animation_player.play("walk_"+facing)
+	elif xDirection != 0 || yDirection !=0 : _animation_player.play("walk_"+facing)
 	pass
 
 # TODO: Create health change function for interactions
