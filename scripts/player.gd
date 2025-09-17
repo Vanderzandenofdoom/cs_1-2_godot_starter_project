@@ -8,9 +8,9 @@ var ySpeed = 300.0
 var yDirection = 0
 
 # TODO: Add health system variables
-# var health = ?
-# var maxHealth = ?
-
+var health = 10
+var maxHealth = 10
+var coins = 0
 # TODO: Add projectile scene for shooting
 # var projectile_scene = preload("res://scenes/projectile.tscn")
 
@@ -99,9 +99,9 @@ func change_health(amount):
 
 # TODO: Create shooting function
 func shoot():
-	# TODO: Create a new projectile instance
+	pass
+		# TODO: Create a new projectile instance
 	# Look at the documentation examples in the lesson
-	
 	
 	# TODO: Set projectile position to player position
 	# Look at the "Setting Object Position" example
@@ -117,5 +117,20 @@ func shoot():
 	
 	# TODO: Print shooting confirmation
 	# print("Shot projectile facing: ", facing)
+func change_coins(amount:int):
+	coins+=amount
+	prints("you have"+str(coins)+"coins")
+	coins=coins+1
+	coins+=1
 	
-	pass
+func changehealth(amount:int):
+	health=10
+	prints("you have"+str(health)+"health")
+	if health>maxHealth:
+		health=maxHealth
+	if health<1:
+		die()
+	
+func die():
+	print ("Game Over")
+	queue_free()
