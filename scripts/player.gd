@@ -12,7 +12,8 @@ var health = 10
 var maxHealth = 10
 var coins = 0
 # TODO: Add projectile scene for shooting
-# var projectile_scene = preload("res://scenes/projectile.tscn")
+
+var projectile_scene = preload("res://scenes/coin.tscn")
 
 func _physics_process(_delta):
 	
@@ -38,22 +39,18 @@ func _physics_process(_delta):
 	# If direction is -1 and speed is 300, we get -300 pixels (left)
 	# Type this exactly: var velocity.y = xDirection * xSpeed
 	
-	
 	# TODO: Calculate Y movement the same way
 	# Type this exactly: var velocity.y = yDirection * ySpeed  
 	
 	# TODO: Set the Y velocity too
 	# Type this exactly: velocity.y = yVector
-	
+	move_and_slide()
 	
 	# TODO: Update facing direction based on movement
 	# Use if statements to check xDirection and yDirection
 	# Set facing to "right", "left", "down", or "up"
 	# Only update facing when actually moving (direction != 0)
 	
-	
-	
-	move_and_slide()
 	
 	if xDirection > 0:
 		facing="right"
@@ -64,12 +61,13 @@ func _physics_process(_delta):
 	elif yDirection > 0:
 		facing="down"
 	
-	update_animation()
 	# TODO: Check for shooting input
 	# Use: if Input.is_action_just_pressed("ui_accept"):
 	# Then call your shoot() function
+	if Input.is_action_just_pressed("ui_select"):
+		shoot()
 	
-	
+	update_animation()
 	# TODO: Actually apply the movement
 	# This is a special Godot function that makes the movement happen
 	# ove_and_slide()Type this exactly: move_and_slide()
@@ -124,13 +122,13 @@ func change_coins(amount:int):
 	coins+=1
 	
 func changehealth(amount:int):
-	health=10
 	prints("you have"+str(health)+"health")
 	if health>maxHealth:
 		health=maxHealth
-	if health<1:
+	if health < 1:
 		die()
 	
 func die():
 	print ("Game Over")
 	queue_free()
+	
