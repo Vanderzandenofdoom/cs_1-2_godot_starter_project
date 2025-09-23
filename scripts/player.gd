@@ -66,7 +66,7 @@ func _physics_process(_delta):
 	# Then call your shoot() function
 	if Input.is_action_just_pressed("ui_select"):
 		shoot()
-	
+		
 	update_animation()
 	# TODO: Actually apply the movement
 	# This is a special Godot function that makes the movement happen
@@ -100,10 +100,10 @@ func shoot():
 	pass
 		# TODO: Create a new projectile instance
 	# Look at the documentation examples in the lesson
-	
+
 	# TODO: Set projectile position to player position
 	# Look at the "Setting Object Position" example
-	
+	var projectile_scene = preload("res://scripts/projectile.gd")
 	
 	# TODO: Set projectile direction using facing variable
 	# Look at the "Calling Functions on Other Objects" example
@@ -116,19 +116,14 @@ func shoot():
 	# TODO: Print shooting confirmation
 	# print("Shot projectile facing: ", facing)
 func change_coins(amount:int):
-	coins+=amount
-	prints("you have"+str(coins)+"coins")
-	coins=coins+1
+	prints("you have "+str(coins)+" coins")
 	coins+=1
 	
 func changehealth(amount:int):
 	prints("you have"+str(health)+"health")
+	health+=amount 
 	if health>maxHealth:
 		health=maxHealth
 	if health < 1:
-		die()
-	
-func die():
-	print ("Game Over")
-	queue_free()
+		queue_free()
 	
