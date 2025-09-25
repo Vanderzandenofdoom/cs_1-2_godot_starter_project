@@ -12,8 +12,8 @@ var health = 10
 var maxHealth = 10
 var coins = 0
 # TODO: Add projectile scene for shooting
+var projectile_scene = preload("res://scenes/projectile.tscn")
 
-var projectile_scene = preload("res://scenes/coin.tscn")
 
 func _physics_process(_delta):
 	
@@ -97,13 +97,16 @@ func change_health(amount):
 
 # TODO: Create shooting function
 func shoot():
+	
+	
+	
 	pass
 		# TODO: Create a new projectile instance
 	# Look at the documentation examples in the lesson
 
 	# TODO: Set projectile position to player position
 	# Look at the "Setting Object Position" example
-	var projectile_scene = preload("res://scripts/projectile.gd")
+	
 	
 	# TODO: Set projectile direction using facing variable
 	# Look at the "Calling Functions on Other Objects" example
@@ -122,6 +125,8 @@ func change_coins(amount:int):
 func changehealth(amount:int):
 	prints("you have"+str(health)+"health")
 	health+=amount 
+	if health < 0:
+		health=0
 	if health>maxHealth:
 		health=maxHealth
 	if health < 1:
