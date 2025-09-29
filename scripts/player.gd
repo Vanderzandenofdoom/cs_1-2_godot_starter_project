@@ -98,7 +98,10 @@ func change_health(amount):
 # TODO: Create shooting function
 func shoot():
 	
-	
+	var new_instance = projectile_scene.instantiate()
+	new_instance.set_direction(facing)
+	get_parent().add_child(new_instance)
+	new_instance.global_position = position - Vector2(0,25)
 	
 	pass
 		# TODO: Create a new projectile instance

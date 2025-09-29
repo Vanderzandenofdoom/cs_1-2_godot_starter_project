@@ -1,5 +1,7 @@
-extends CharacterBody2D
-
+extends Area2D
+var speed = 500
+var direction : Vector2
+var facing = 0
 # TODO: Add speed variable for how fast projectile moves
 # var speed = ?
 
@@ -14,21 +16,26 @@ func _physics_process(_delta):
 	# TODO: Apply the movement
 	# Use: move_and_slide()
 	
-	
+	position += direction * speed * _delta
 	# TODO: Print movement for debugging
 	# print("Projectile moving: ", velocity)
 	
 	pass
 
 # TODO: Create function to set projectile direction
-func set_direction(facing_direction):
-	# TODO: Convert facing string to Vector2 direction
-	# Use if statements: "up" -> Vector2.UP, "down" -> Vector2.DOWN, etc.
-	# Set direction = the Vector2 result
+func set_direction(_facing: String):
 	
-	# TODO: Print the direction for debugging
-	# print("Projectile direction set to: ", direction)
+	if _facing == "up":
+		direction = Vector2(0,-1)
 	
+	if _facing == "down":
+		direction = Vector2(0,1)
+	
+	if _facing == "right":
+		direction = Vector2(1,0)
+	
+	if _facing == "left":
+		direction = Vector2(-1,0)
 	pass
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
