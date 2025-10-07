@@ -9,11 +9,6 @@ func _ready():
 	
 	pass
 
-func shoot(body):
-	var projectile_clone = projectile_original.instantiate()
-	projectile_clone.global_position = position + offset
-	projectile_clone.set_direction(facing)
-	get_tree().get_root().add_child(projectile_clone)
 
 
 func _process(delta: float) -> void:
@@ -32,26 +27,17 @@ func shoot(body):
 	
 	
 func _on_area_2d_body_entered(body: Node2D) -> void:
-<<<<<<< HEAD
-	Player = body
-	if body == body.Player:
+	player = body
+	if body == player:
 		var projectile_clone = projectile_original.instantiate()
-	
-	# TODO: Set projectile position to player position
 		projectile_clone.global_position = position
-	
-	# TODO: Set projectile direction using facing variable
-		projectile_clone.set_direction(Player.position)
-	
-	# TODO: Add projectile to the game world
+		projectile_clone.set_direction(player.position)
 		get_tree().get_root().add_child(projectile_clone)
-	pass # Replace with function body.
-# TODO: Create a new projectile instance
-=======
+	pass
+
 	player = body
 	if body.name == "Player":
 		inrange = true
->>>>>>> 9e0ddde690b21d7f9f527b6e0b5ff0b68b086e38
 
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
