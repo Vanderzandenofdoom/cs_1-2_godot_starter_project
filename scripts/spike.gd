@@ -8,4 +8,3 @@ func _on_body_entered(body):
 	if body.name == "Player":
 		body.change_health(-2)
 	pass
-	
