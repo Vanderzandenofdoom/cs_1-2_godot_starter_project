@@ -67,7 +67,7 @@ func update_animation():
 		_animation_player.play("walk_" + facing)
 		pass
 		
-	
+
 
 
 # TODO: Create health change function for interactions
@@ -101,3 +101,12 @@ func shoot():
 	get_tree().get_root().add_child(projectile_clone)
 
 	pass
+
+
+func _on_melee_body_entered(body: Node2D) -> void:
+	
+	pass # Replace with function body.
+
+
+func _on_melee_body_exited(body: Node2D) -> void:
+	pass # Replace with function body.

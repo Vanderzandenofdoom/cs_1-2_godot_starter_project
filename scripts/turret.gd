@@ -16,6 +16,8 @@ func _process(delta: float) -> void:
 		timer-=delta
 		if timer < 0:
 			shoot(player)
+			timer=timerstart
+		timer -= delta
 	pass
 	
 func shoot(body):
@@ -42,6 +44,6 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body.name == "Player":
-		inrange == false
+		inrange = false
 	
 	pass
