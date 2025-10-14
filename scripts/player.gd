@@ -13,7 +13,10 @@ var coins = 0
 # TODO: Add health system variables
 var maxHealth = 10
 var health = maxHealth
-
+var Is_attacking = false
+var attack_timer = 0.6
+var Current_enemy
+var playerinrange = false
 func _ready() -> void:
 	pass
 
