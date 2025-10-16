@@ -1,7 +1,7 @@
 extends CharacterBody2D
 var projectile_original = preload("res://scenes/enemy_projectile.tscn")
 var player
-var timerstart = 0.001
+var timerstart = 2
 var timer = timerstart
 var inrange = false
 

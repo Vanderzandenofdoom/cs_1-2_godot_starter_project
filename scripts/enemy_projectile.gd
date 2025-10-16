@@ -1,8 +1,8 @@
 extends Area2D
-var speed = 1.01
+var speed = 200
 var direction
 var target
-var timerstart = 0.001
+var timerstart = 2
 var timer = timerstart
 
 func set_direction(target):
@@ -22,6 +22,5 @@ func _on_body_entered(body):
 		pass
 func _process(delta: float):
 	timer += delta
-	speed = speed * speed
 	if timer < 0:
 		queue_free()
