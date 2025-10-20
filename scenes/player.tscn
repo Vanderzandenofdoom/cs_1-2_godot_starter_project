@@ -863,7 +863,7 @@ animations = [{
 radius = 12.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d2wvv"]
-size = Vector2(20, 27)
+size = Vector2(27.5, 29.25)
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_hf8rj")
@@ -882,7 +882,7 @@ shape = SubResource("CircleShape2D_ptgn0")
 position = Vector2(0, -12)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="melee"]
-position = Vector2(0, -3.5)
+position = Vector2(0.75, -15.375)
 shape = SubResource("RectangleShape2D_d2wvv")
 
 [connection signal="body_entered" from="melee" to="." method="_on_melee_body_entered"]

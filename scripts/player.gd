@@ -43,10 +43,10 @@ func _physics_process(_delta):
 	# TODO: Update facing direction based on movement
 	if xDirection > 0:
 		facing = "right"
-		melee_hitbox.position = Vector2(30,10)
+		melee_hitbox.position = Vector2(30,0)
 	elif xDirection < 0:
 		facing = "left"
-		melee_hitbox.position = Vector2(-30,10)
+		melee_hitbox.position = Vector2(-30,0)
 	elif yDirection < 0:
 		facing = "up"
 		melee_hitbox.position = Vector2(0,-40)
