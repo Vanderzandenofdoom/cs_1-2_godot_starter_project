@@ -6,7 +6,6 @@ var timer = timerstart
 var inrange = false
 
 func _ready():
-	
 	pass
 
 
