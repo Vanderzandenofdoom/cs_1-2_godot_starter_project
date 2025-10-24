@@ -10985,3 +10985,7 @@ position = Vector2(364, -157)
 
 [node name="MeleeMinotaur7" parent="Enemies/MeleeMinotaurs" instance=ExtResource("15_dokvp")]
 position = Vector2(576, -15)
+
+[connection signal="body_entered" from="Items/Lever2" to="Items/Lever2" method="_on_body_entered"]
+[connection signal="body_entered" from="Items/Lever3" to="Items/Lever3" method="_on_body_entered"]
+[connection signal="body_entered" from="Items/Lever4" to="Items/Lever4" method="_on_body_entered"]
