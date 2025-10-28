@@ -7,7 +7,7 @@ func _on_body_entered(body):
 	if body.name == "Player":
 		Active = true
 		print("lever 1 active")
-
+		update_animation()
 func update_animation():
 	if Active:
 		_animation_player.play("on")

@@ -28,12 +28,6 @@ func shoot(body):
 	
 	
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	player = body
-	if body == player:
-		var projectile_clone = projectile_original.instantiate()
-		projectile_clone.global_position = position
-		projectile_clone.set_direction(player.position)
-		get_tree().get_root().add_child(projectile_clone)
 	pass
 
 	player = body
