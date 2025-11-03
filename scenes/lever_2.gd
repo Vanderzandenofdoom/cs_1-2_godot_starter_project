@@ -5,6 +5,7 @@ func _on_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		Active = true
 		print("lever 2 active")
+		body.change_coins(1)
 		update_animation()
 func update_animation():
 	if Active:

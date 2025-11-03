@@ -6,6 +6,7 @@ func _on_body_entered(body: Node2D) -> void:
 		Active = true
 		print("lever 4 active")
 		update_animation()
+		
 func update_animation():
 	if Active:
 		_animation_player.play("on")
