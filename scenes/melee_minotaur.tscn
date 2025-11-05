@@ -1,15 +1,8 @@
 [gd_scene load_steps=133 format=3 uid="uid://ddq1bkyn8j1by"]
 
 [ext_resource type="Texture2D" uid="uid://busa5myjbwb4i" path="res://sprites/Download38899.png" id="1_nohjn"]
+[ext_resource type="Script" uid="uid://bpljepyp73rko" path="res://scenes/meleeminotaur.gd" id="1_vltjp"]
 [ext_resource type="Texture2D" uid="uid://dqoamfql4kdnq" path="res://sprites/Download19204.png" id="2_7o3s3"]
-
-[sub_resource type="GDScript" id="GDScript_b1fvm"]
-script/source = "extends CharacterBody2D
-
-
-func _on_melee_body_entered(body: Node2D) -> void:
-	pass # Replace with function body.
-"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dgyv5"]
 atlas = ExtResource("1_nohjn")
@@ -1019,7 +1012,7 @@ radius = 212.33936
 radius = 107.07474
 
 [node name="MeleeMinotaur" type="CharacterBody2D" groups=["enemy"]]
-script = SubResource("GDScript_b1fvm")
+script = ExtResource("1_vltjp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_xx5td")
@@ -1049,3 +1042,8 @@ shape = SubResource("CircleShape2D_adppo")
 shape = SubResource("CircleShape2D_uk8e4")
 
 [connection signal="body_entered" from="melee" to="." method="_on_melee_body_entered"]
+[connection signal="body_exited" from="melee" to="." method="_on_melee_body_exited"]
+[connection signal="body_entered" from="shoot" to="." method="_on_shoot_body_entered"]
+[connection signal="body_exited" from="shoot" to="." method="_on_shoot_body_exited"]
+[connection signal="body_entered" from="chase" to="." method="_on_chase_body_entered"]
+[connection signal="body_exited" from="chase" to="." method="_on_chase_body_exited"]

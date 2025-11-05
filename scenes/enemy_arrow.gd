@@ -20,7 +20,6 @@ func _on_body_entered(body):
 		body.change_health(-2)
 		queue_free()
 		pass
-		
 func _process(delta: float):
 	timer += delta
 	if timer < 0:
