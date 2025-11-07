@@ -17,6 +17,7 @@ func _process(delta: float) -> void:
 			shoot(player)
 			timer=timerstart
 		timer -= delta
+	
 	pass
 	
 func shoot(body):

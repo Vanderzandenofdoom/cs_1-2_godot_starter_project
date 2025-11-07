@@ -7,6 +7,7 @@ var timer = timerstart
 
 func set_direction(target):
 	direction=position.direction_to(target)
+	scale.x *= -1
 	pass
 	
 func _ready() -> void:

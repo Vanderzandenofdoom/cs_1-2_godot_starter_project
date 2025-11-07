@@ -5,66 +5,77 @@ var chasing = false
 var attacking = false 
 var health = 3
 var speed = 200
+var startime = 1
+var timer = startime
 @onready var player: CharacterBody2D = %Player
 var projectile_original = preload("res://scenes/enemy_arrow.tscn")
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	if in_range:
-		shoot()
-		pass
-
+		if timer < 0:
+			shoot()
+			timer = startime
+		timer -= delta
+		
+	
+	pass
 
 func _on_melee_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		player = body
-	in_range = false
-	chasing = true
-	attacking = true
+		in_range = false
+		chasing = true
+		attacking = true
+		print("chasing")
+		print("attacking")
 	pass # Replace with function body.
 
 
 func _on_melee_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		player = body
-	in_range = false
-	chasing = true
-	attacking = false
+		chasing = true
+		attacking = false
+		print("chasing")
 	pass # Replace with function body.
 
 
 func _on_shoot_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		player = body
-	in_range = true
-	chasing = false
-	attacking = false
+		in_range = true
+		chasing = false
+		attacking = false
+		print("shooting")
 	pass # Replace with function body.
 
 
 func _on_shoot_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		player = body
-	in_range = false
-	chasing = false
-	attacking = false
+		in_range = false
+		chasing = false
+		attacking = false
 	pass # Replace with function body.
 
 
 func _on_chase_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		player = body
-	chasing = true
-	in_range = false
-	attacking = false
+		chasing = true
+		in_range = false
+		attacking = false
+		print("chasing")
 	pass # Replace with function body.
 
 
 func _on_chase_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		player = body
-	in_range = true
-	chasing = false
-	attacking = false
+		in_range = true
+		chasing = false
+		attacking = false
+		print("shooting")
 	pass # Replace with function body.
 
 func shoot():
