@@ -22,7 +22,11 @@ func _process(delta: float) -> void:
 		timer -= delta
 	elif chasing:
 		position += position.direction_to(player.position) * speed*delta
-		
+	if attacking:
+		if timer < 0:
+			player.change_health(-2)
+			timer = startime
+		timer -= delta
 			
 		if xDirection > 0:
 			facing = "right"
@@ -32,14 +36,15 @@ func _process(delta: float) -> void:
 			facing = "up"
 		elif yDirection > 0:
 			facing = "down"
+		update_animation()
 func update_animation():
 
 	if attacking:
 		_animation_player.play("attack_" + facing)
 	else:
-		if velocity.is_zero_approx():
-			_animation_player.play("idle_crossbow_" + facing)
-		elif !velocity.is_zero_approx():
+		if !in_range and !chasing:
+			_animation_player.play("crossbow_idle_" + facing)
+		elif chasing and !attacking:
 			_animation_player.play("walk_" + facing)
 
 
@@ -48,14 +53,14 @@ func _on_shoot_body_entered(body: Node2D) -> void:
 		player = body
 		in_range = true
 		print("shooting")
-	pass # Replace with function body.
+	 # Replace with function body.
 
 
 func _on_shoot_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		player = body
 		in_range = false
-	pass # Replace with function body.
+	 # Replace with function body.
 
 
 func _on_chase_body_entered(body: Node2D) -> void:
@@ -64,7 +69,7 @@ func _on_chase_body_entered(body: Node2D) -> void:
 		chasing = true
 		in_range = false
 		print("chasing")
-	pass # Replace with function body.
+	 # Replace with function body.
 
 
 func _on_chase_body_exited(body: Node2D) -> void:
@@ -73,7 +78,7 @@ func _on_chase_body_exited(body: Node2D) -> void:
 		in_range = true
 		chasing = false
 		print("shooting")
-	pass # Replace with function body.
+	# Replace with function body.
 	
 func _on_melee_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
@@ -82,7 +87,7 @@ func _on_melee_body_entered(body: Node2D) -> void:
 		attacking = true
 		print("chasing")
 		print("attacking")
-	pass # Replace with function body.
+	 # Replace with function body.
 
 
 func _on_melee_body_exited(body: Node2D) -> void:
@@ -91,7 +96,7 @@ func _on_melee_body_exited(body: Node2D) -> void:
 		chasing = true
 		attacking = false
 		print("chasing")
-	pass # Replace with function body.
+	# Replace with function body.
 
 
 func shoot():
