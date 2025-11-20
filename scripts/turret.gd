@@ -8,8 +8,6 @@ var inrange = false
 func _ready():
 	pass
 
-
-
 func _process(delta: float) -> void:
 	if inrange:
 		timer-=delta
